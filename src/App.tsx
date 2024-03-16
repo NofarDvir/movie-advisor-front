@@ -1,16 +1,15 @@
 import './App.css'
 import React from 'react';
-import Register from './Register';
+import Login from './login';
 
 const App: React.FC = () => {
-
-    const handleRegister = (firstname: string, lastname: string, email: string, password: string, confirmpassword: string) => {
-    console.log('Registerd with:', { firstname, lastname, email, password, confirmpassword });
+  const handleLogin = (email: string, password: string) => {
+    console.log('Logged in with:', { email, password });
   };
 
   return (
     <div className="container">
-      <Register onRegister={handleRegister}/>
+      <Login onLogin={handleLogin} />
     </div>
   );
 };

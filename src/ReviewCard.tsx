@@ -2,33 +2,31 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ReviewCard: React.FC = () => {
+
   return (
-    <div className="card">
+    <div className="card w-50 mx-auto my-3">
       <div className="container">
-        <div className="row">
+        <div className="row align-items-center justify-content-start">
           <div className="col-1">
             <img
               src="../public/images/profile_pic_placeholder.png"
-              className="p-2"
-              width="80"
-              height="80"
+              height="50"
             />
           </div>
-          <div className="col-2 p-4">
-            <p className="h5">Nofar Dvir</p>
+          <div className="col-2">
+            <p className="h5 align-middle m-0 h-100">Nofar Dvir</p>
           </div>
-          <div className="col p-4">
-            <button type="button" className="btn btn-outline-primary">
+          <div className="col-2">
+            <button type="button" className="btn btn-sm btn-outline-primary">
               Follow
             </button>
           </div>
         </div>
       </div>
       <img
-        src="../public/images/movie-advisor-logo.png"
+        src="../public/images/WatchIt!.png"
         className="card-img-top"
-        width="80"
-        height="80"
+        height="200"
         style={{ backgroundColor: "#e3f2fd" }}
       />
       <div className="card-body text-center">

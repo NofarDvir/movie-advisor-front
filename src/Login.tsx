@@ -1,17 +1,21 @@
+// src/Login.tsx
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 
-interface LoginProps {
-  onLogin: (email: string, password: string) => void;
-}
-
-const onLogin = (email: string, password: string) => {
-  console.log('Logged in with:', { email, password });
-};
+interface LoginProps {}
 
 const Login: React.FC<LoginProps> = () => {
+  const navigate = useNavigate();
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const onLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("Logged in with:", { email, password });
+    navigate("/")
+  };
 
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
@@ -29,11 +33,11 @@ const Login: React.FC<LoginProps> = () => {
   };
 
   const isValidEmailFormat = (email: string) => {
-    return email.includes("@" && ".com");
+    return email.includes("@" && ".com"); //ADD: && check that the email is in the DB
   };
 
   const isValidPasswordFormat = (password: string) => {
-    return password.length > 6;
+    return password.length > 6; //ADD: && check that the password is in the DB
   };
 
   const handleLogin = () => {
@@ -41,8 +45,8 @@ const Login: React.FC<LoginProps> = () => {
   };
 
   const componentStyle = {
-    backgroundColor: "#e0e0e0",
-    padding: "20px",
+    backgroundColor: "#e0e0e0", // Set your desired background color
+    padding: "20px", // Add additional styles as needed
   };
 
   return (
@@ -50,7 +54,7 @@ const Login: React.FC<LoginProps> = () => {
       <center>
         <h1>Login</h1>
       </center>
-      <form className="row g-3 needs-validation">
+      <form className="row g-3 needs-validation" onSubmit={onLogin}>
         <div className="mb-3">
           <label htmlFor="Email" className="form-label">
             Email:
@@ -90,11 +94,7 @@ const Login: React.FC<LoginProps> = () => {
           </div>
         </div>
         <div className="d-grid gap-2 col-6 mx-auto">
-          <button
-            className="btn btn-primary"
-            type="submit"
-            onClick={handleLogin}
-          >
+          <button className="btn btn-primary" type="submit">
             Login
           </button>
         </div>
@@ -106,12 +106,12 @@ const Login: React.FC<LoginProps> = () => {
       <div className="d-grid gap-2 col-6 mx-auto">
         <button type="button" className="btn btn-primary" onClick={handleLogin}>
           <img
-            src="../images/apple.png"
+            src="../images/google-logo.png"
             className="me-2"
             width="40"
             height="40"
           />
-          Sign in with Apple
+          Sign in with Google
         </button>
       </div>
       <center>

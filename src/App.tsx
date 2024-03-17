@@ -1,15 +1,15 @@
 import './App.css'
 import React from 'react';
-import Login from './login';
+import Home from './Home'
+import ReviewCard from './ReviewCard';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC = () => {
-  const handleLogin = (email: string, password: string) => {
-    console.log('Logged in with:', { email, password });
-  };
 
   return (
     <div className="container">
-      <Login onLogin={handleLogin} />
+      <Home/>
+      <ReviewCard/>
     </div>
   );
 };

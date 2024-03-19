@@ -31,7 +31,6 @@ const Search: React.FC = () => {
   return (
     <>
       <form
-        className="d-flex"
         onSubmit={search}
         style={{
           paddingTop: "40px",
@@ -39,16 +38,16 @@ const Search: React.FC = () => {
           paddingLeft: "150px",
         }}
       >
-        <div className="input-group">
+        <div className="d-flex justify-content-center">
           <input
             type="text"
             ref={searchTerm}
-            className="form-control"
+            className="form-control w-50"
             placeholder="Movie title..."
             aria-label="Movie title..."
             aria-describedby="button-addon2"
           />
-          <button className="btn btn-dark" type="submit" id="button-addon2">
+          <button className="btn btn-success" type="submit" id="button-addon2">
             Search
           </button>
         </div>
@@ -56,10 +55,11 @@ const Search: React.FC = () => {
 
       <div className="text-center" style={{ paddingTop: "40px" }}>
         {showPlaceholder && (
-          <p className="h4">Please insert movie title for results</p>
+          <p className="h4">
+            Seem's like we did not search yet... try the search bar above!
+          </p>
         )}
       </div>
-
       <div
         className="row row-cols-1 row-cols-md-3 g-4 mw-100"
         style={{

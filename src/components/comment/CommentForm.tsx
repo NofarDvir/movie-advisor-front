@@ -3,9 +3,13 @@ import { createComment } from "../../services/comment-service";
 
 interface CommentFormProps {
   reviewId?: string;
+  postCommentCallback: () => void;
 }
 
-const CommentForm: React.FC<CommentFormProps> = ({ reviewId }) => {
+const CommentForm: React.FC<CommentFormProps> = ({
+  reviewId,
+  postCommentCallback,
+}) => {
   const commentContent = useRef<HTMLTextAreaElement>(null);
 
   const handleCommentSubmit = async () => {
@@ -16,6 +20,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ reviewId }) => {
           reviewId: reviewId!,
         });
         commentContent.current!.value = "";
+        postCommentCallback();
       } catch (err) {
         console.log(err);
       }
@@ -31,7 +36,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ reviewId }) => {
           placeholder="Enter your comment..."
         />
       </div>
-      <div className="p-2 g-col-6">
+      <div className="ms-2">
         <button className="btn btn-outline-dark" onClick={handleCommentSubmit}>
           Post
         </button>

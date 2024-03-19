@@ -1,7 +1,7 @@
 import './App.css'
 import React from 'react';
 import Home from './components/Home'
-import ReviewCard from './ReviewCard';
+import ReviewCard from './components/ReviewCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC = () => {

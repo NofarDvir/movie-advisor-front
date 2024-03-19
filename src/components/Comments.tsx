@@ -60,7 +60,7 @@ const Comments: React.FC = () => {
           reviewScore={4}
           reviewImageUrl="https://generated.vusercontent.net/placeholder.svg"
           reviewText="The best movie EVER!!!!!"
-          reviewerName="Oren Eyal"
+          reviewerName="Nofar Dvir"
           reviewerProfilePictureUrl="https://generated.vusercontent.net/placeholder.svg"
           likeReview={() => {}}
           commentOnReview={() => {}}

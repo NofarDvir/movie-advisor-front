@@ -97,8 +97,8 @@ const Login: React.FC = () => {
                   Email or password are incrorect
                 </span>
               )}
-              <button type="submit" className="btn btn-dark w-100 mt-1 mx-auto">
-                Login
+              <button type="submit" className="btn btn-light w-100 mt-1 mx-auto">
+                  Login
               </button>
             </div>
           </form>
@@ -107,7 +107,7 @@ const Login: React.FC = () => {
         <div className="d-flex justify-content-center mt-2">
           <button
             type="submit"
-            className="btn btn-outline-dark w-100 mx-auto"
+            className="btn btn-outline-dark btn-secondary w-100 mx-auto"
             onClick={() => googleLogin()}
           >
             <i className="bi bi-google me-2" />
@@ -118,8 +118,8 @@ const Login: React.FC = () => {
         <hr className="mb-2" />
 
         <div className="text-center">
-          <a className="text-black" href="/register">
-            Don't have an account? Register
+          <a className="text-light" href="/register">
+              Don't have an account? Register
           </a>
         </div>
       </div>

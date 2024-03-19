@@ -38,7 +38,7 @@ const MyReviewCard: React.FC<MyReviewCardProps> = ({
         <div className="d-flex justify-content-center gap-3">
           <button
             type="button"
-            className={"btn btn-outline-dark"}
+            className={"btn btn-outline-light"}
             onClick={handleEditClick}
           >
             <i className="bi bi-pencil me-2 align-middle"></i>

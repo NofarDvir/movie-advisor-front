@@ -57,8 +57,8 @@ const FormInputImage: React.FC<FormInputImageProps> = ({
         />
         <label
           htmlFor={name}
-          className="btn btn-outline-dark w-50 mx-auto btn-sm is-invalid"
-        >
+          className="btn btn-secondary w-50 mx-auto btn-sm is-invalid"
+          >
           Choose {label}
         </label>
         {(errors[name] && (

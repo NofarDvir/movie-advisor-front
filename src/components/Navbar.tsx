@@ -15,8 +15,8 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-light">
-        <div className="container-fluid">
+      <nav className="navbar navbar-expand-lg bg-secondary">
+          <div className="container-fluid">
           <img
             src={appLogoUrl}
             alt="Logo"
@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
               </li>
             </ul>
             <button
-              className="btn btn-outline-danger nav-item ms-lg-2 mt-3 mt-lg-0"
+              className="btn btn-outline-warning nav-item ms-lg-2 mt-3 mt-lg-0"
               type="button"
               onClick={handleLogout}
             >

@@ -53,17 +53,26 @@ const Feed: React.FC = () => {
     setReviews(updatedReviews);
   };
 
+  const style = {
+    display: "flex",
+    justifyContent: "center",
+    gap: "3vh",
+    maxWidth: "75%",
+  };
+
   return (
     <>
-      {reviews.map((review) => (
-        <ReviewCard
-          key={review.id}
-          {...review}
-          showLikesAndComments={true}
-          likeReview={() => handleReviewLike(review.id)}
-          unlikeReview={() => handleReviewUnlike(review.id)}
-        />
-      ))}
+      <div className="container" style={style}>
+        {reviews.map((review) => (
+          <ReviewCard
+            key={review.id}
+            {...review}
+            showLikesAndComments={true}
+            likeReview={() => handleReviewLike(review.id)}
+            unlikeReview={() => handleReviewUnlike(review.id)}
+          />
+        ))}
+      </div>
     </>
   );
 };

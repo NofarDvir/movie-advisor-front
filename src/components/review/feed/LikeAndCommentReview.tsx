@@ -17,7 +17,7 @@ const LikeAndCommentReview: React.FC<LikeAndCommentReviewProps> = ({
 }) => {
   return (
     <div className="text-center py-3">
-      <div className="d-flex justify-content-center gap-3">
+      <div className="d-flex justify-content-start gap-3">
         <button
           type="button"
           className={`btn ${(isLiked && "btn-danger") || "btn-outline-danger"}`}
@@ -34,7 +34,7 @@ const LikeAndCommentReview: React.FC<LikeAndCommentReviewProps> = ({
         </button>
         <button
           type="button"
-          className="btn btn-outline-dark"
+          className="btn btn-outline-light"
           onClick={handleCommentClick}
         >
           <i className="bi bi-chat me-2 align-middle" />

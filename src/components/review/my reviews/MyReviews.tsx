@@ -27,15 +27,23 @@ const MyReviews: React.FC = () => {
     fetchReviews();
   };
 
+  const style = {
+    display: "flex",
+    justifyContent: "center",
+    gap: "3vh",
+  };
+
   return (
     <>
-      {reviews.map((review) => (
-        <MyReviewCard
-          key={review.id}
-          {...review}
-          deleteReview={handledeleteReview}
-        />
-      ))}
+      <div className="container" style={style}>
+        {reviews.map((review) => (
+          <MyReviewCard
+            key={review.id}
+            {...review}
+            deleteReview={handledeleteReview}
+          />
+        ))}
+      </div>
     </>
   );
 };

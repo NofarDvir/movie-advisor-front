@@ -38,7 +38,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   };
 
   return (
-    <div className="card w-50 mx-auto my-3 px-4 py-3">
+    <div className="card w-75 mx-auto my-3 px-4 py-3 bg-gray-400">
       <UserAndTimestampCardHeader author={author} timeStamp={timeStamp} />
       <ReviewCardBody
         description={description}

@@ -21,14 +21,14 @@ const ReviewCardBody: React.FC<ReviewCardBodyProps> = ({
         height="200"
         style={{ backgroundColor: "#e3f2fd" }}
       />
-      <div className="card-body ps-0">
-        <p className="h5 my-0">Movie Title: {movieTitle}</p>
+      <div className="card-body ps-0 ">
+        <p className="h5 my-0 ">Movie Title: {movieTitle}</p>
         <span className="fw-bold me-2">Score:</span>
         {Array.from({ length: score }, (_) => (
           <i className="bi bi-star-fill me-1" style={{ color: "#ecc94b" }} />
         ))}
 
-        {Array.from({ length: 5 - score }, (_) => (
+        {Array.from({ length: 5 - score }, () => (
           <i className="bi bi-star me-1" style={{ color: "#ecc94b" }} />
         ))}
 

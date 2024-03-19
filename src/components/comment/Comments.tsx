@@ -25,9 +25,17 @@ const Comments: React.FC = () => {
     fetchReview();
   }, []);
 
+  const style = {
+    display: "flex",
+    justifyContent: "center",
+    gap: "3vh",
+  };
+
   return (
     <>
-      {review && <ReviewCard {...review} showLikesAndComments={false} />}
+      <div style={style} className="container bg-secondary">
+        {review && <ReviewCard {...review} showLikesAndComments={false} />}
+      </div>
       <p className="h3 text-center mt-0">Comments</p>
       <CommentForm
         reviewId={reviewId}

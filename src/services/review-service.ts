@@ -1,4 +1,5 @@
 import apiClient from "./api-client";
+import { Comment } from "./comment-service";
 
 export interface ReviewSubmition {
   movieTitle: string;
@@ -14,8 +15,8 @@ export interface Review extends ReviewSubmition {
     fullName: string;
     imgUrl: string;
   };
-  commentsCount: number;
-  likesCount: number;
+  comments: [Comment];
+  likes: number;
   isLiked: boolean;
 }
 
@@ -34,12 +35,12 @@ export const getAllReviews = () => {
 };
 
 export const getReviewById = (reviewId: string) => {
-  return new Promise<Review[]>((resolve, reject) => {
+  return new Promise<Review>((resolve, reject) => {
     apiClient
-      .get(`/reviews/${reviewId}`)
+      .get(`/reviews/id/${reviewId}`)
       .then((response) => {
-        const reviews = response.data as Review[];
-        resolve(reviews);
+        const review = response.data as Review;
+        resolve(review);
       })
       .catch((error) => {
         console.log("error in getting specific review: ", error);
@@ -48,15 +49,15 @@ export const getReviewById = (reviewId: string) => {
   });
 };
 
-export const getReviewsByUserId = (userId: string) => {
+export const getConnectedUserReviews = () => {
   return new Promise<Review[]>((resolve, reject) => {
     apiClient
-      .get(`/reviews/user/${userId}`)
+      .get(`/reviews/connectedUser`)
       .then((response) => {
-        resolve(response.data as Review[]);
+        const reviews = response.data as Review[];
+        resolve(reviews);
       })
       .catch((error) => {
-        console.log("error in getting all reviews of specific user: ", error);
         reject(error);
       });
   });
@@ -107,10 +108,7 @@ export const unlikeReview = (reviewId: string) => {
   });
 };
 
-export const editReview = (
-  reviewId: string,
-  review: Partial<ReviewSubmition>
-) => {
+export const editReview = (reviewId: string, review: ReviewSubmition) => {
   return new Promise<void>((resolve, reject) => {
     console.log("Editing review...", reviewId, review);
     apiClient

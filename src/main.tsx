@@ -5,21 +5,21 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./components/css/global.css";
-import Home from "./components/Home.tsx";
+import Feed from "./components/review/feed/Feed.tsx";
 import Login from "./components/auth/Login.tsx";
 import Register from "./components/auth/Register.tsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Profile from "./components/Profile.tsx";
-import Search from "./components/Search.tsx";
+import Profile from "./components/profile/Profile.tsx";
+import Search from "./components/search/Search.tsx";
 import Comments from "./components/comment/Comments.tsx";
-import MyReviews from "./components/MyReviews.tsx";
-import NewReviewForm from "./components/NewReviewForm.tsx";
-import EditReview from "./components/EditReview.tsx";
+import MyReviews from "./components/review/my reviews/MyReviews.tsx";
+import NewReviewForm from "./components/review/NewReviewForm.tsx";
+import EditReviewForm from "./components/review/my reviews/EditReviewForm.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Feed />,
   },
   {
     path: "/login",
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />,
+    element: <Feed />,
   },
   {
     path: "/profile",
@@ -55,14 +55,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/edit/review/:reviewId",
-    element: <EditReview />,
+    element: <EditReviewForm />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <GoogleOAuthProvider clientId="1090894694760-7uaoumhhtlffr2nhj2bv7q81ig14otcn.apps.googleusercontent.com">
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
+    {/* <React.StrictMode> */}
+    <RouterProvider router={router} />
+    {/* </React.StrictMode> */}
   </GoogleOAuthProvider>
 );

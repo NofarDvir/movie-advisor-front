@@ -5,7 +5,7 @@ import CommentCard from "./CommentCard";
 import { getCommentsByReviewId } from "../../services/comment-service";
 import CommentForm from "./CommentForm";
 import { Review, getReviewById } from "../../services/review-service";
-import ReviewCard from "../ReviewCard";
+import ReviewCard from "../review/ReviewCard";
 
 export interface IComment {
   _id?: string;

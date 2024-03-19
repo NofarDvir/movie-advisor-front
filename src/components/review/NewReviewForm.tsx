@@ -7,9 +7,9 @@ import FormInput, { FormInputProps } from "../form/FormInput";
 import { uploadPhoto } from "../../services/file-service";
 import { ReviewSubmition, createReview } from "../../services/review-service";
 import { Movie, getMovieById } from "../../services/movie-service";
-import Navbar from "../Navbar";
 import FormTextArea from "../form/FormTextArea";
 import FormInputImage from "../form/FormInputFile";
+import placeholderImgUrl from "/src/images/placeholder.jpg";
 
 const schema = z
   .object({
@@ -85,7 +85,7 @@ const NewReviewForm: React.FC = () => {
     };
 
     await createReview(review);
-    navigate("/home");
+    navigate("/");
   };
 
   const onErrorSubmit = () => {
@@ -94,8 +94,6 @@ const NewReviewForm: React.FC = () => {
 
   return (
     <>
-      <Navbar />
-
       <div className="d-flex align-items-center justify-content-center py-2">
         <div
           className={`border border-2 p-4 rounded ${shake && "shake"}`}
@@ -128,7 +126,7 @@ const NewReviewForm: React.FC = () => {
                   name={"reviewPicture"}
                   label={"Review Picture"}
                   fullWidth
-                  defaultImage={"/public/images/placeholder.jpg"}
+                  defaultImage={placeholderImgUrl}
                 />
                 {inputFields.map((field) =>
                   field.type === "textArea" ? (

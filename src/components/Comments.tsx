@@ -2,39 +2,52 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import CommentCard from "./CommentCard";
-import { getComments } from "../services/comment-service";
-import ReviewCard from "./ReviewCard";
+import { getCommentsByReviewId } from "../services/comment-service";
 import CommentForm from "./CommentForm";
+import CommentReviewCard from "./CommentReviewCard";
+import { IReview, getReviewById } from "../services/review-service";
 
-// interface CommentsProps {
-//   reviewId: number;
-// }
-
-interface Comment {
-  userId: number;
-  reviewId: number;
-  userName: string;
+export interface IComment {
+  _id?: string;
   description: string;
-  timestamp: Date;
+  owner: string;
+  reviewId: string;
+  timeStamp: Date;
+  userFullName: string;
+  userImgUrl: string;
 }
 
 const Comments: React.FC = () => {
-  const [comments, setComments] = useState<Comment[]>([]);
+  const [review, setReview] = useState<IReview[]>([]);
+  const [comments, setComments] = useState<IComment[]>([]);
   const [dataLoaded, setDataLoaded] = useState(false);
 
-  const { reviewId } = useParams<{ reviewId?: string }>();
+  const { reviewId } = useParams<{ reviewId: string }>();
+
+  useEffect(() => {
+    const fetchReview = async () => {
+      try {
+        if (reviewId !== undefined) {
+          const review = await getReviewById(reviewId);
+          setReview(review);
+        }
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+      }
+    };
+
+    fetchReview();
+  }, [reviewId]);
 
   const postComment = (comment: string) => {
-    // Your logic to post the comment (e.g., make an API call)
     console.log(`Posting comment: ${comment}`);
   };
-
 
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        if (reviewId !== null) {
-          const commentsResult = await getComments(Number(reviewId));
+        if (reviewId !== undefined) {
+          const commentsResult = await getCommentsByReviewId(reviewId);
           setComments(commentsResult);
           setDataLoaded(true);
         }
@@ -51,20 +64,7 @@ const Comments: React.FC = () => {
   return (
     <>
       <Navbar />
-      <ReviewCard
-          reviewId={Number(reviewId)}
-          commentsCount={40}
-          isLiked={false}
-          likeCount={45}
-          postedOn={new Date()}
-          reviewScore={4}
-          reviewImageUrl="https://generated.vusercontent.net/placeholder.svg"
-          reviewText="The best movie EVER!!!!!"
-          reviewerName="Nofar Dvir"
-          reviewerProfilePictureUrl="https://generated.vusercontent.net/placeholder.svg"
-          likeReview={() => {}}
-          commentOnReview={() => {}}
-        />
+      <CommentReviewCard {...review}/>
       <div
         className="row row-cols-1 row-cols"
         style={{
@@ -73,15 +73,18 @@ const Comments: React.FC = () => {
           paddingLeft: "50px",
         }}
       >
-        <CommentForm postComment={postComment} />
-        <p className="h2" style={{paddingTop: "30px"}}>Comments</p>
-        {/* {comments.map((comment, index) => (
+        <CommentForm reviewId={reviewId} />
+        <p className="h2" style={{ paddingTop: "30px" }}>
+          Comments
+        </p>
+        {comments.map((comment, index) => (
           <CommentCard key={index} {...comment} />
-        ))} */}
-        <CommentCard userName={"Nofar Dvir"} description={"Very good movie!!!"} timestamp={"30.1.2024 14:29:34"}/>
-        <CommentCard userName={"Nofar Dvir"} description={"Very good movie!!!"} timestamp={"30.1.2024 14:29:34"}/>
-        <CommentCard userName={"Nofar Dvir"} description={"Very good movie!!!"} timestamp={"30.1.2024 14:29:34"}/>
-
+        ))}
+        {/* <CommentCard
+          userName={"Gil Segev"}
+          description={"Very good movie!!!"}
+          timestamp={"30.1.2024 14:29:34"}
+        /> */}
       </div>
     </>
   );

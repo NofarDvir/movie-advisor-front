@@ -52,7 +52,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    // loader: auzthorizedRouteLoader,
+    loader: auzthorizedRouteLoader,
     element: <Home />,
   },
   {

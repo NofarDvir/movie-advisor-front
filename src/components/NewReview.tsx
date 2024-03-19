@@ -1,14 +1,19 @@
 import React from "react";
 import Navbar from "./Navbar";
-import NewReviewForm from "./auth/NewReviewForm";
+import NewReviewForm from "../components/NewReviewForm";
+import { useLocation } from 'react-router-dom';
 
-const Home: React.FC = () => {
+
+const NewReview: React.FC = () => {
+  const location = useLocation();
+  const { movie_id, title } = location.state;
+
   return (
     <>
       <Navbar />
-      <NewReviewForm />
+      <NewReviewForm movieId={movie_id} movieTitle={title} />
     </>
   );
 };
 
-export default Home;
+export default NewReview;

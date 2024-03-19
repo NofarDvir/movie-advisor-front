@@ -9,6 +9,11 @@ import { uploadPhoto } from "../services/file-service";
 import { IReview, createReview } from "../services/review-service";
 import EditReviewImage from "../components/EditReviewImage";
 
+interface NewReviewProps {
+  movieId: number;
+  movieTitle: string;
+}
+
 const schema = z
   .object({
     description: z.string().min(1, "Description can't be empty"),
@@ -49,7 +54,10 @@ const inputFields: FormInputProps[] = [
   },
 ];
 
-const EditProfile: React.FC = () => {
+const NewReviewForm: React.FC<NewReviewProps> = ({
+  movieId,
+  movieTitle,
+}) => {
   const navigate = useNavigate();
 
   const [shake, setShake] = useState(false);
@@ -60,11 +68,15 @@ const EditProfile: React.FC = () => {
   });
 
   const initialImageUrl = "../../public/images/addImage.png";
+  // const initialImageUrl = "https://image.tmdb.org/t/p/w500" + {poster_path};
+  // console.log(initialImageUrl)
+  // console.log({poster_path})
 
-  const onSubmit = async ({ description, score, reviewPicture }: FormData) => {
+  const onSubmit = async ({ description, score, reviewPicture, movieTitle }: FormData) => {
     const imgUrl = await uploadPhoto(reviewPicture[0]);
 
     const review: IReview = {
+      movieTitle,
       description,
       score,
       imgUrl,
@@ -96,6 +108,8 @@ const EditProfile: React.FC = () => {
           <EditReviewImage imageUrl={initialImageUrl} />
         </div>
 
+        <p className="h6">Title: {movieTitle}</p>
+
         <div
           className="overflow-auto"
           style={{
@@ -115,21 +129,10 @@ const EditProfile: React.FC = () => {
               </div>
             </form>
           </FormProvider>
-
-          {/* <div className="d-flex justify-content-center mt-2">
-            <button
-              type="submit"
-              className="btn btn-outline-dark w-100 mx-auto"
-              onClick={() => googleLogin()}
-            >
-              <i className="bi bi-google me-2" />
-              Sign Up With Google
-            </button>
-          </div> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default EditProfile;
+export default NewReviewForm;

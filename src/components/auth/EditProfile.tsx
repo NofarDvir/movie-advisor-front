@@ -4,7 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import z from "zod";
 import "./shake.css";
-import FormInput, { FormInputProps } from "../form/FormInput";
+import FormInput, { FormInputProps } from "./FormInput";
 import { uploadPhoto } from "../../services/file-service";
 import { IUser, register } from "../../services/user-service";
 import EditProfileImage from "../EditProfileImage";
@@ -108,8 +108,18 @@ const EditProfile: React.FC = () => {
     setShake(true);
   };
 
+  // const onGoogleLoginSuccess = async (credentialResponse: CodeResponse) => {
+  //   await googleSignin(credentialResponse);
+  //   navigate("/");
+  // };
+
+  // const googleLogin = useGoogleLogin({
+  //   onSuccess: onGoogleLoginSuccess,
+  //   flow: "auth-code",
+  // });
+
   return (
-    <div className="d-flex min-vh-100 align-items-center justify-content-center py-2">
+    <div className="d-flex align-items-center justify-content-center py-2">
       <div
         className={`border border-2 p-4 rounded ${shake && "shake"}`}
         onAnimationEnd={() => setShake(false)}
@@ -122,6 +132,9 @@ const EditProfile: React.FC = () => {
           <p className="text-muted mt-3">
             Please edit your information below in order to update your profile
           </p>
+
+          {/* <img src="src/assets/react.svg"  alt="..."
+          style={{ maxWidth: '100%', width: '100px', height: '100px', maxHeight: '200px', marginBottom: '10px' }}></img> */}
           <EditProfileImage imageUrl={initialImageUrl} />
         </div>
 
@@ -145,6 +158,16 @@ const EditProfile: React.FC = () => {
             </form>
           </FormProvider>
 
+          {/* <div className="d-flex justify-content-center mt-2">
+            <button
+              type="submit"
+              className="btn btn-outline-dark w-100 mx-auto"
+              onClick={() => googleLogin()}
+            >
+              <i className="bi bi-google me-2" />
+              Sign Up With Google
+            </button>
+          </div> */}
         </div>
       </div>
     </div>

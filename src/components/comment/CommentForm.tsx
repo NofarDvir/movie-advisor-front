@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { createComment } from "../services/comment-service";
+import { createComment } from "../../services/comment-service";
 
 interface CommentFormProps {
   reviewId?: string;

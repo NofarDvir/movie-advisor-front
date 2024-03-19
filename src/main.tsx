@@ -11,7 +11,7 @@ import Register from "./components/auth/Register.tsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Profile from "./components/Profile.tsx";
 import Search from "./components/Search.tsx";
-import Comments from "./components/Comments.tsx";
+import Comments from "./components/comment/Comments.tsx";
 import MyReviews from "./components/MyReviews.tsx";
 import NewReviewForm from "./components/NewReviewForm.tsx";
 import EditReview from "./components/EditReview.tsx";

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 import CommentCard from "./CommentCard";
-import { getCommentsByReviewId } from "../services/comment-service";
+import { getCommentsByReviewId } from "../../services/comment-service";
 import CommentForm from "./CommentForm";
-import { Review, getReviewById } from "../services/review-service";
-import ReviewCard from "./ReviewCard";
+import { Review, getReviewById } from "../../services/review-service";
+import ReviewCard from "../ReviewCard";
 
 export interface IComment {
   _id?: string;

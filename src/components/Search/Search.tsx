@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
-import Navbar from "./Navbar";
 import SearchCardResult from "./SearchCardResult";
-import { searchMovie } from "../services/movie-service";
+import { searchMovie } from "../../services/movie-service";
 
 interface Movie {
   backdrop_path: string;
@@ -31,7 +30,6 @@ const Search: React.FC = () => {
 
   return (
     <>
-      <Navbar />
       <form
         className="d-flex"
         onSubmit={search}

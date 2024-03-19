@@ -1,7 +1,7 @@
 import { CodeResponse } from "@react-oauth/google";
 import apiClient from "./api-client";
 
-export interface IUser {
+export interface User {
   fullName?: string;
   email: string;
   password?: string;
@@ -9,7 +9,7 @@ export interface IUser {
   _id?: string;
 }
 
-export const register = (user: IUser) => {
+export const register = (user: User) => {
   return new Promise<void>((resolve, reject) => {
     apiClient
       .post("/auth/register", user)
@@ -23,7 +23,7 @@ export const register = (user: IUser) => {
   });
 };
 
-export const update = (user: IUser) => {
+export const update = (user: User) => {
   return new Promise<void>((resolve, reject) => {
     apiClient
       .put(`/users/`, user)
@@ -37,7 +37,7 @@ export const update = (user: IUser) => {
   });
 };
 
-export const login = (user: IUser) => {
+export const login = (user: User) => {
   return new Promise<void>((resolve, reject) => {
     apiClient
       .post("/auth/login", user)
@@ -79,11 +79,11 @@ export const googleSignin = (credentialResponse: CodeResponse) => {
 };
 
 export const getMyUserData = () => {
-  return new Promise<IUser>((resolve, reject) => {
+  return new Promise<User>((resolve, reject) => {
     apiClient
       .get("/users/connected")
       .then((response) => {
-        resolve(response.data as IUser);
+        resolve(response.data as User);
       })
       .catch((error) => {
         reject(error);

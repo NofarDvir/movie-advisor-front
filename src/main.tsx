@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
@@ -9,18 +8,16 @@ import Feed from "./components/review/feed/Feed.tsx";
 import Login from "./components/auth/Login.tsx";
 import Register from "./components/auth/Register.tsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Profile from "./components/profile/Profile.tsx";
+import EditProfile from "./components/profile/EditProfile.tsx";
 import Search from "./components/search/Search.tsx";
 import Comments from "./components/comment/Comments.tsx";
 import MyReviews from "./components/review/my reviews/MyReviews.tsx";
 import NewReviewForm from "./components/review/NewReviewForm.tsx";
 import EditReviewForm from "./components/review/my reviews/EditReviewForm.tsx";
+import Navbar from "./components/Navbar.tsx";
+import React from "react";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Feed />,
-  },
   {
     path: "/login",
     element: <Login />,
@@ -30,39 +27,45 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "/home",
-    element: <Feed />,
-  },
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
-  {
-    path: "/search",
-    element: <Search />,
-  },
-  {
-    path: "/comments/:reviewId",
-    element: <Comments />,
-  },
-  {
-    path: "/myreviews",
-    element: <MyReviews />,
-  },
-  {
-    path: "/addReview/:movieId",
-    element: <NewReviewForm />,
-  },
-  {
-    path: "/edit/review/:reviewId",
-    element: <EditReviewForm />,
+    element: <Navbar />,
+    path: "/",
+    children: [
+      {
+        path: "/",
+        element: <Feed />,
+      },
+      {
+        path: "/profile",
+        element: <EditProfile />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
+      },
+      {
+        path: "/comments/:reviewId",
+        element: <Comments />,
+      },
+      {
+        path: "/myreviews",
+        element: <MyReviews />,
+      },
+      {
+        path: "/addReview/:movieId",
+        element: <NewReviewForm />,
+      },
+      {
+        path: "/editReview/:reviewId",
+        element: <EditReviewForm />,
+      },
+    ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <GoogleOAuthProvider clientId="1090894694760-7uaoumhhtlffr2nhj2bv7q81ig14otcn.apps.googleusercontent.com">
-    {/* <React.StrictMode> */}
-    <RouterProvider router={router} />
-    {/* </React.StrictMode> */}
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   </GoogleOAuthProvider>
 );

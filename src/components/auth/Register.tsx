@@ -3,11 +3,12 @@ import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import z from "zod";
-import FormInput, { FormInputProps } from "./FormInput";
+import FormInput, { FormInputProps } from "../form/FormInput";
 import { uploadPhoto } from "../../services/file-service";
-import { IUser, googleSignin, register } from "../../services/user-service";
+import { User, googleSignin, register } from "../../services/user-service";
 import { CodeResponse, useGoogleLogin } from "@react-oauth/google";
-import FormInputImage from "./FormInputFile";
+import FormInputImage from "../form/FormInputFile";
+import profilePicPlaceholder from "/src/images/profile_pic_placeholder.png";
 
 const schema = z
   .object({
@@ -64,11 +65,6 @@ const inputFields: FormInputProps[] = [
     label: "Confirm Password",
     type: "password",
   },
-  // {
-  //   name: "profilePicture",
-  //   label: "Profile Picture",
-  //   type: "file",
-  // },
 ];
 
 const Register: React.FC = () => {
@@ -89,7 +85,7 @@ const Register: React.FC = () => {
   }: FormData) => {
     const imgUrl = await uploadPhoto(profilePicture[0]);
 
-    const user: IUser = {
+    const user: User = {
       fullName,
       email,
       password,
@@ -140,7 +136,7 @@ const Register: React.FC = () => {
               <FormInputImage
                 name={"profilePicture"}
                 label={"Profile Picture"}
-                defaultImage={"/public/images/profile_pic_placeholder.png"}
+                defaultImage={profilePicPlaceholder}
               />
               {inputFields.map((field) => (
                 <FormInput key={field.name} {...field} showValidFeedback />

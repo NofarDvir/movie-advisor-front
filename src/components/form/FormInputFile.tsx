@@ -68,7 +68,7 @@ const FormInputImage: React.FC<FormInputImageProps> = ({
         )) ||
           (showValidFeedback && dirtyFields[name] && (
             <div className="valid-feedback text-center">Looks good!</div>
-          ))} 
+          ))}
       </div>
       <input
         {...register(name, {

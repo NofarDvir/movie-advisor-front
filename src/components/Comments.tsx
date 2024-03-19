@@ -80,11 +80,6 @@ const Comments: React.FC = () => {
         {comments.map((comment, index) => (
           <CommentCard key={index} {...comment} />
         ))}
-        {/* <CommentCard
-          userName={"Gil Segev"}
-          description={"Very good movie!!!"}
-          timestamp={"30.1.2024 14:29:34"}
-        /> */}
       </div>
     </>
   );

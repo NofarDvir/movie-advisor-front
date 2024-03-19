@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface SearchCardProps {
   id: number;
@@ -8,15 +9,20 @@ interface SearchCardProps {
 }
 
 const SearchCardResult: React.FC<SearchCardProps> = ({
+  id,
   title,
   poster_path,
   overview,
 }) => {
+  const navigate = useNavigate();
 
   const handleAddReview = () => {
-    
+    console.log("Add review for movie:", id);
+    navigate(`/addReview`, {
+      state: { id, title, poster_path },
+    });
   };
-  
+
   return (
     <div className="col">
       <div className="card text-bg-dark h-100">

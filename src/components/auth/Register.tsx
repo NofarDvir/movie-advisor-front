@@ -143,7 +143,7 @@ const Register: React.FC = () => {
               ))}
 
               <div className="text-center mt-4">
-                <button type="submit" className="btn btn-dark w-100 mx-auto">
+                <button type="submit" className="btn btn-light w-100 mx-auto">
                   Sign Up
                 </button>
               </div>
@@ -153,7 +153,7 @@ const Register: React.FC = () => {
           <div className="d-flex justify-content-center mt-2">
             <button
               type="submit"
-              className="btn btn-outline-dark w-100 mx-auto"
+              className="btn btn-outline-light w-100 mx-auto"
               onClick={() => googleLogin()}
             >
               <i className="bi bi-google me-2" />

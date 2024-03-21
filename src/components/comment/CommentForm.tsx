@@ -31,13 +31,13 @@ const CommentForm: React.FC<CommentFormProps> = ({
     <div className="d-flex align-items-center justify-content-center">
       <div className="col-4">
         <textarea
-          className="form-control border-dark"
+          className="form-control border-light"
           ref={commentContent}
           placeholder="Enter your comment..."
         />
       </div>
       <div className="ms-2">
-        <button className="btn btn-outline-dark" onClick={handleCommentSubmit}>
+        <button className="btn btn-outline-light" onClick={handleCommentSubmit}>
           Post
         </button>
       </div>
